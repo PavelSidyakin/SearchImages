@@ -1,0 +1,67 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.searchimages"
+        minSdkVersion 21
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+
+    implementation ("com.github.bumptech.glide:glide:4.9.0") {
+        exclude group: "com.android.support"
+    }
+    implementation "com.android.support:support-fragment:28.0.0"
+
+    implementation "android.arch.paging:runtime:1.0.1"
+
+    implementation 'com.google.dagger:dagger-android:2.20'
+    implementation 'com.google.dagger:dagger-android-support:2.20'
+
+    implementation 'com.arello-mobile:moxy:1.5.6'
+    implementation 'com.arello-mobile:moxy-android:1.5.6'
+    implementation 'com.arello-mobile:moxy-app-compat:1.5.6'
+
+    implementation 'com.squareup.retrofit2:retrofit:2.6.0'
+    implementation 'com.squareup.retrofit2:converter-simplexml:2.6.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
+
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.1"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.1"
+
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+
+    kapt 'com.google.dagger:dagger-android-processor:2.20'
+    kapt 'com.google.dagger:dagger-compiler:2.20'
+    kapt 'com.arello-mobile:moxy-compiler:1.5.6'
+
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.4.2")
+    testImplementation("org.mockito:mockito-core:3.0.0")
+
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.4.2")
+
+
+}

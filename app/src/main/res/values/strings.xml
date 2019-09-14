@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Search Images</string>
+
+    <string name="search_text_hint">Type here to search an image</string>
+
+    <string name="error_general">Error. Tap to retry</string>
+
+    <string name="error_no_network">Check internet connection. Tap to retry</string>
+
+</resources>
