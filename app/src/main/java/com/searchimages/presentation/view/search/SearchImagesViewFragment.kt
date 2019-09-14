@@ -58,6 +58,7 @@ class SearchImagesViewFragment : MvpAppCompatFragment(), SearchImagesView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         rv_images_search_list.adapter = searchImagesAdapter
         rv_images_search_list.layoutManager = GridLayoutManager(context, 4)
+        rv_images_search_list.setHasFixedSize(true)
         rv_images_search_list.addOnItemTouchListener(RecyclerViewOnItemClickListener(applicationProvider.applicationContext, rv_images_search_list, object: RecyclerViewOnItemClickListener.OnItemClickListener {
             override fun onItemClick(view: View, position: Int) {
                 val item: SearchImagesImageData?  = searchImagesAdapter.currentList?.get(position)
