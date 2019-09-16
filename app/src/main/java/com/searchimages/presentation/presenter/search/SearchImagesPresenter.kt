@@ -165,6 +165,10 @@ class SearchImagesPresenter(
         @VisibleForTesting
         const val PAGE_SIZE = 50
         @VisibleForTesting
-        const val INITIAL_PAGE_SIZE = PAGE_SIZE * 2
+        const val INITIAL_PAGE_SIZE_FACTOR = 3
+        @VisibleForTesting
+        const val INITIAL_PAGE_SIZE = PAGE_SIZE * INITIAL_PAGE_SIZE_FACTOR
+
+
     }
 }
