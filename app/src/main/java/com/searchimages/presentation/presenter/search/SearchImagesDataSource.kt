@@ -45,7 +45,7 @@ class SearchImagesDataSource(
 
                 if (searchImagesResult.resultCode == SearchImagesResultCode.OK) {
                     searchImagesResult.searchImagesResultData?.let { data ->
-                        callback.onResult(data.imagesData, null, data.imagesData.size)
+                        callback.onResult(data.imagesData, null, SearchImagesPresenter.INITIAL_PAGE_SIZE_FACTOR + 1)
                     }
                 } else {
                     retryRunnable = Runnable { loadInitial(params, callback) }
