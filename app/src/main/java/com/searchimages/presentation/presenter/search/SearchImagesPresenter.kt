@@ -25,19 +25,20 @@ import kotlin.coroutines.CoroutineContext
 @InjectViewState
 class SearchImagesPresenter(
     val imagesInteractor: ImagesInteractor,
-    val coroutineMainDispatcher: CoroutineDispatcher = Dispatchers.Main,
-    val coroutineIoDispatcher: CoroutineDispatcher = Dispatchers.IO
+    private val coroutineMainDispatcher: CoroutineDispatcher = Dispatchers.Main,
+    private val coroutineIoDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : MvpPresenter<SearchImagesView>(), CoroutineScope {
 
     private val job = Job()
     override val coroutineContext: CoroutineContext get() = job +  coroutineMainDispatcher
     private var requestJob: Job? = null
 
-    private val pageListConfig = PagedList.Config.Builder()
-        .setPageSize(PAGE_SIZE)
-        .setInitialLoadSizeHint(INITIAL_PAGE_SIZE)
+    private val pageListConfig by lazy { PagedList.Config.Builder()
+        .setPageSize(pageSize)
+        .setInitialLoadSizeHint(pageSize * initialPageSizeFactor)
         .setEnablePlaceholders(false)
         .build()
+    }
 
     private val textChannel = BroadcastChannel<String>(1)
 
@@ -48,6 +49,11 @@ class SearchImagesPresenter(
     @VisibleForTesting
     var performSearchTimeoutMillis: Long = PERFORM_SEARCH_DEFAULT_TIMEOUT_MILLIS
 
+    @VisibleForTesting
+    var pageSize: Int = DEFAULT_PAGE_SIZE
+
+    @VisibleForTesting
+    var initialPageSizeFactor: Int = DEFAULT_INITIAL_PAGE_SIZE_FACTOR
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
@@ -162,13 +168,7 @@ class SearchImagesPresenter(
         private const val TAG = "SearchImagesPresenter"
         private const val PERFORM_SEARCH_DEFAULT_TIMEOUT_MILLIS = 500L
 
-        @VisibleForTesting
-        const val PAGE_SIZE = 50
-        @VisibleForTesting
-        const val INITIAL_PAGE_SIZE_FACTOR = 3
-        @VisibleForTesting
-        const val INITIAL_PAGE_SIZE = PAGE_SIZE * INITIAL_PAGE_SIZE_FACTOR
-
-
+        const val DEFAULT_PAGE_SIZE = 50
+        const val DEFAULT_INITIAL_PAGE_SIZE_FACTOR = 3
     }
 }
