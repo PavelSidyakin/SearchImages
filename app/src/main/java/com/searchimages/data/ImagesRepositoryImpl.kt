@@ -17,8 +17,7 @@ class ImagesRepositoryImpl
     @Inject
     constructor(
         private val flickrImagesRepository: FlickrImagesRepository
-    )
-    : ImagesRepository {
+    ) : ImagesRepository {
 
 
     override suspend fun searchImages(text: String, pageIndex: Int, pageItemCount: Int): SearchImagesRequestResult {

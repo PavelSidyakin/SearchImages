@@ -16,9 +16,8 @@ class ImagesInteractorImpl
     @Inject
     constructor(
         private val networkUtils: NetworkUtils,
-        private val imagesRepository: ImagesRepository)
-
-    : ImagesInteractor {
+        private val imagesRepository: ImagesRepository
+    ) : ImagesInteractor {
     override suspend fun searchImages(text: String, pageIndex: Int, pageItemCount: Int): SearchImagesResult {
 
         try {

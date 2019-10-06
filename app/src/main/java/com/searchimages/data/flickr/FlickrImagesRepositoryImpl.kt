@@ -18,9 +18,7 @@ import javax.inject.Inject
 class FlickrImagesRepositoryImpl
 
     @Inject
-    constructor()
-
-    : FlickrImagesRepository {
+    constructor() : FlickrImagesRepository {
 
     private val flickrRetrofit: Retrofit by lazy { createRetrofit() }
 
