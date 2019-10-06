@@ -16,6 +16,7 @@ class SearchImagesDataSourceFactory @ExperimentalCoroutinesApi constructor(
 
 ) : DataSource.Factory<Int, SearchImagesImageData>()  {
 
+    @ExperimentalCoroutinesApi
     override fun create(): DataSource<Int, SearchImagesImageData> {
         return SearchImagesDataSource(
             text,

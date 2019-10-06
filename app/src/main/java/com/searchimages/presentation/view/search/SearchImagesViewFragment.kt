@@ -23,8 +23,10 @@ import kotlinx.android.synthetic.main.layout_search_images.pb_images_search
 import kotlinx.android.synthetic.main.layout_search_images.rv_images_search_list
 import kotlinx.android.synthetic.main.layout_search_images.sv_images_search_view
 import kotlinx.android.synthetic.main.layout_search_images.tv_images_search_error
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import javax.inject.Inject
 
+@ExperimentalCoroutinesApi
 class SearchImagesViewFragment : MvpAppCompatFragment(), SearchImagesView {
 
     @Inject

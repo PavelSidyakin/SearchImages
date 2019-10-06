@@ -15,6 +15,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
+@ExperimentalCoroutinesApi
 @FlowPreview
 class SearchImagesDataSource @ExperimentalCoroutinesApi constructor(
         private val text: String,
@@ -55,7 +56,7 @@ class SearchImagesDataSource @ExperimentalCoroutinesApi constructor(
                 }
                 searchImagesPresenter.onResult(searchImagesResult.resultCode)
 
-            }catch (throwable: Throwable) {
+            } catch (throwable: Throwable) {
                 log { w(TAG, "SearchImagesDataSource.loadInitial()", throwable) }
                 retryRunnable = Runnable { loadInitial(params, callback) }
                 searchImagesPresenter.onResult(SearchImagesResultCode.GENERAL_ERROR)
@@ -81,7 +82,7 @@ class SearchImagesDataSource @ExperimentalCoroutinesApi constructor(
                 }
                 searchImagesPresenter.onResult(searchImagesResult.resultCode)
 
-            }catch (throwable: Throwable) {
+            } catch (throwable: Throwable) {
                 log { w(TAG, "SearchImagesDataSource.loadAfter()", throwable) }
                 retryRunnable = Runnable { loadAfter(params, callback) }
                 searchImagesPresenter.onResult(SearchImagesResultCode.GENERAL_ERROR)

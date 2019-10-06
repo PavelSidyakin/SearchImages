@@ -6,6 +6,7 @@ import com.searchimages.R
 import com.searchimages.TheApplication
 import com.searchimages.data.ImagesRepositoryImpl
 import com.searchimages.presentation.view.search.SearchImagesViewFragment
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
@@ -14,6 +15,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var imagesRepositoryImpl: ImagesRepositoryImpl
 
 
+    @ExperimentalCoroutinesApi
     override fun onCreate(savedInstanceState: Bundle?) {
         TheApplication.getAppComponent().inject(this)
 
