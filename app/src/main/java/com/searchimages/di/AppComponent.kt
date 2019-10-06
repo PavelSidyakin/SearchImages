@@ -1,7 +1,6 @@
 package com.searchimages.di
 
 import com.searchimages.TheApplication
-import com.searchimages.presentation.presenter.search.SearchImagesPresenter
 import com.searchimages.presentation.view.MainActivity
 import com.searchimages.presentation.view.search.SearchImagesViewFragment
 import dagger.Component

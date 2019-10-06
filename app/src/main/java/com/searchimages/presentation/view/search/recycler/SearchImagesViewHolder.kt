@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.searchimages.R
 import com.searchimages.model.SearchImagesImageData
-import kotlinx.android.synthetic.main.recycler_item_images_search.view.iv_images_search_list_item_picture
+import kotlinx.android.synthetic.main.recycler_item_search_images.view.iv_images_search_list_item_picture
 
 class SearchImagesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
@@ -28,7 +28,7 @@ class SearchImagesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     companion object {
         fun create(parent: ViewGroup): SearchImagesViewHolder {
             val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.recycler_item_images_search, parent, false)
+                .inflate(R.layout.recycler_item_search_images, parent, false)
             return SearchImagesViewHolder(view)
         }
     }

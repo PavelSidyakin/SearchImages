@@ -16,7 +16,7 @@ import javax.inject.Inject
 class ImagesRepositoryImpl
     @Inject
     constructor(
-        val flickrImagesRepository: FlickrImagesRepository
+        private val flickrImagesRepository: FlickrImagesRepository
     )
     : ImagesRepository {
 

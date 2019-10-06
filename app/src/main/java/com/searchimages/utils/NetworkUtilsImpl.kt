@@ -9,7 +9,7 @@ import javax.inject.Inject
 class NetworkUtilsImpl
     @Inject
     constructor(
-        val applicationProvider: ApplicationProvider
+        private val applicationProvider: ApplicationProvider
         ) : NetworkUtils {
 
     override val networkConnectionOn: Boolean
@@ -29,6 +29,6 @@ class NetworkUtilsImpl
     }
 
     private companion object {
-        private val TAG: String = "NetworkUtils"
+        private const val TAG: String = "NetworkUtils"
     }
 }

@@ -1,3 +1,7 @@
+plugins {
+    id "io.gitlab.arturbosch.detekt" version "1.1.0"
+}
+
 apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
@@ -9,6 +13,13 @@ apply plugin: 'kotlin-kapt'
 apply plugin: "de.mannodermaus.android-junit5"
 
 android {
+    lintOptions {
+        abortOnError false
+
+        disable 'GradleDependency'
+        disable 'DuplicatePlatformClasses'
+    }
+
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.searchimages"

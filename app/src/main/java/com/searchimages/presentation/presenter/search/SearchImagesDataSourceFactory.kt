@@ -3,10 +3,11 @@ package com.searchimages.presentation.presenter.search
 import android.arch.paging.DataSource
 import com.searchimages.domain.ImagesInteractor
 import com.searchimages.model.SearchImagesImageData
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.BroadcastChannel
 import kotlin.coroutines.CoroutineContext
 
-class SearchImagesDataSourceFactory(
+class SearchImagesDataSourceFactory @ExperimentalCoroutinesApi constructor(
     private val text: String,
     private val imagesInteractor: ImagesInteractor,
     private val searchImagesPresenter: SearchImagesPresenter,

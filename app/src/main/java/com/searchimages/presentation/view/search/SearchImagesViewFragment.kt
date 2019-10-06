@@ -19,10 +19,10 @@ import com.searchimages.model.SearchImagesImageData
 import com.searchimages.presentation.presenter.search.SearchImagesPresenter
 import com.searchimages.presentation.view.RecyclerViewOnItemClickListener
 import com.searchimages.presentation.view.search.recycler.SearchImagesAdapter
-import kotlinx.android.synthetic.main.layout_images_search_view.pb_images_search
-import kotlinx.android.synthetic.main.layout_images_search_view.rv_images_search_list
-import kotlinx.android.synthetic.main.layout_images_search_view.sv_images_search_view
-import kotlinx.android.synthetic.main.layout_images_search_view.tv_images_search_error
+import kotlinx.android.synthetic.main.layout_search_images.pb_images_search
+import kotlinx.android.synthetic.main.layout_search_images.rv_images_search_list
+import kotlinx.android.synthetic.main.layout_search_images.sv_images_search_view
+import kotlinx.android.synthetic.main.layout_search_images.tv_images_search_error
 import javax.inject.Inject
 
 class SearchImagesViewFragment : MvpAppCompatFragment(), SearchImagesView {
@@ -50,7 +50,7 @@ class SearchImagesViewFragment : MvpAppCompatFragment(), SearchImagesView {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         (activity as AppCompatActivity).supportActionBar?.hide()
-        val view = inflater.inflate(R.layout.layout_images_search_view, container, false)
+        val view = inflater.inflate(R.layout.layout_search_images, container, false)
 
         return view
     }

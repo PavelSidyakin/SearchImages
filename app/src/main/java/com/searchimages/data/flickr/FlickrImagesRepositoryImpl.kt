@@ -44,10 +44,10 @@ class FlickrImagesRepositoryImpl
     }
 
     private fun createRetrofit(): Retrofit {
-        val interceptor = HttpLoggingInterceptor() {message ->
+        val interceptor = HttpLoggingInterceptor {message ->
             log { i(TAG, message) }
         }
-        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
+        interceptor.level = HttpLoggingInterceptor.Level.BODY
         val client: OkHttpClient = OkHttpClient.Builder()
             .addInterceptor(interceptor)
             .build()
@@ -60,7 +60,7 @@ class FlickrImagesRepositoryImpl
     }
 
     private fun createSearchImagesService(): SearchImagesService {
-        return flickrRetrofit.create(SearchImagesService::class.java);
+        return flickrRetrofit.create(SearchImagesService::class.java)
     }
 
     private interface SearchImagesService {

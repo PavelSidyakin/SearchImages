@@ -8,7 +8,7 @@ import android.view.View
 
 class RecyclerViewOnItemClickListener(context: Context, recyclerView: RecyclerView, private val listener: OnItemClickListener?) : RecyclerView.OnItemTouchListener {
 
-    internal var gestureDetector: GestureDetector
+    private var gestureDetector: GestureDetector
 
     interface OnItemClickListener {
         fun onItemClick(view: View, position: Int)

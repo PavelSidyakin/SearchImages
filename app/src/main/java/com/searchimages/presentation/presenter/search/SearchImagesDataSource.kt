@@ -6,6 +6,8 @@ import com.searchimages.model.SearchImagesImageData
 import com.searchimages.model.SearchImagesResult
 import com.searchimages.model.SearchImagesResultCode
 import com.searchimages.utils.logs.log
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.channels.BroadcastChannel
 import kotlinx.coroutines.flow.asFlow
@@ -13,7 +15,8 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
-class SearchImagesDataSource(
+@FlowPreview
+class SearchImagesDataSource @ExperimentalCoroutinesApi constructor(
         private val text: String,
         private val imagesInteractor: ImagesInteractor,
         private val searchImagesPresenter: SearchImagesPresenter,
@@ -31,7 +34,7 @@ class SearchImagesDataSource(
         }
     }
 
-    var retryRunnable: Runnable? = null
+    private var retryRunnable: Runnable? = null
 
     override fun loadInitial(params: LoadInitialParams<Int>, callback: LoadInitialCallback<Int, SearchImagesImageData>) {
         GlobalScope.launch (coroutineContext) {
@@ -90,7 +93,7 @@ class SearchImagesDataSource(
     }
 
 
-    fun retry() {
+    private fun retry() {
         retryRunnable?.run()
     }
 

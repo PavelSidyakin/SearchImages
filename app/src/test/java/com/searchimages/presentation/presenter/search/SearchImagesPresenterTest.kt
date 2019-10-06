@@ -10,6 +10,7 @@ import com.searchimages.presentation.view.search.SearchImagesView
 import com.searchimages.utils.logs.XLog
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
@@ -23,6 +24,7 @@ import org.mockito.Mockito
 import org.mockito.MockitoAnnotations
 import kotlin.math.min
 
+@ExperimentalCoroutinesApi
 @DisplayName("SearchImagesPresenter tests")
 class SearchImagesPresenterTest {
 
@@ -262,6 +264,7 @@ class SearchImagesPresenterTest {
             return uninitialized()
         }
 
+        @Suppress("UNCHECKED_CAST")
         private fun <T> uninitialized(): T = null as T
 
         private fun areListsIdentical(imageList: List<String>, pagedList: PagedList<SearchImagesImageData> ): Boolean {
@@ -269,7 +272,7 @@ class SearchImagesPresenterTest {
                 return false
             }
 
-            for (i in 0 until imageList.size) {
+            for (i in imageList.indices) {
                 if (imageList[i] != pagedList[i]?.id) {
                     return false
                 }

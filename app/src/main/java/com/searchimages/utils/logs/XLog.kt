@@ -3,7 +3,7 @@ package com.searchimages.utils.logs
 import android.util.Log
 
 object XLog {
-    var enabled = true
+    private var enabled = true
 
     fun enableLogging(enable: Boolean) {
         enabled = enable

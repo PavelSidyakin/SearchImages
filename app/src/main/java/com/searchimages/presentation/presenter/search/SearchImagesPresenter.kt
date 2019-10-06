@@ -12,6 +12,8 @@ import com.searchimages.utils.logs.log
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancel
@@ -22,9 +24,10 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
+@ExperimentalCoroutinesApi
 @InjectViewState
 class SearchImagesPresenter(
-    val imagesInteractor: ImagesInteractor,
+    private val imagesInteractor: ImagesInteractor,
     private val coroutineMainDispatcher: CoroutineDispatcher = Dispatchers.Main,
     private val coroutineIoDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : MvpPresenter<SearchImagesView>(), CoroutineScope {
@@ -55,6 +58,7 @@ class SearchImagesPresenter(
     @VisibleForTesting
     var initialPageSizeFactor: Int = DEFAULT_INITIAL_PAGE_SIZE_FACTOR
 
+    @FlowPreview
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
 
@@ -137,7 +141,7 @@ class SearchImagesPresenter(
             return
         }
 
-        if (!searchText.isEmpty() && requestedText != searchText) {
+        if (searchText.isNotEmpty() && requestedText != searchText) {
             requestedText = searchText
 
             GlobalScope.launch(coroutineContext) {
